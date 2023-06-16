@@ -70,15 +70,8 @@ export default App;
 - Additional customization options for the rendered components.
 - Error handling and fallback UI for failed API requests.
 - Unit tests and documentation improvements.
-
-We welcome contributions and feedback from the community to enhance the functionality and usability of ReactGithubList.
-
-## Suggestions
-
 - Experiment with different CSS styles to customize the appearance of the rendered repository list.
 - Consider using ReactGithubList as a component within a larger application, such as a developer portfolio or project showcase page.
 - Explore the GitHub API documentation to discover additional data that can be integrated into the component, such as repository descriptions or star counts.
 
-```
-
-Feel free to modify and enhance the README.md file according to your project's specific needs.
+We welcome contributions and feedback from the community to enhance the functionality and usability of ReactGithubList.
