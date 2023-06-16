@@ -1,6 +1,3 @@
-
-
-```
 # ReactGithubList
 
 ReactGithubList is a React component that displays a list of GitHub repositories for a given username. It fetches the repository data from the GitHub API and renders it in a simple and customizable format.
