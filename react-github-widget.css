@@ -1,0 +1,27 @@
+.github-widget {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    padding: 10px;
+    max-width: 400px;
+  }
+  
+  .github-widget .repo {
+    margin-bottom: 10px;
+  }
+  
+  .github-widget .repo-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .github-widget .repo-description {
+    color: #777;
+    font-size: 14px;
+  }
+  
+  .github-widget .repo-details {
+    color: #999;
+    font-size: 12px;
+  }
+   
