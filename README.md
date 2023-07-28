@@ -11,7 +11,7 @@ The React Github Widget component simplifies the process of integrating GitHub r
 You can install the React Github Widget package using npm or yarn:
 
 ```bash
-npm install react-github-widget
+npm install reactjs-github-widget
 ```
 
 or
@@ -27,7 +27,7 @@ To use the React Github Widget component in your application, follow these steps
 1. Import the component in your file:
 
    ```jsx
-   import ReactGithubWidget from 'react-github-widget';
+   import ReactGithubWidget from 'reactjs-github-widget';
    ```
 
 2. Place the component in your JSX code, passing the `username` prop with the desired GitHub username:

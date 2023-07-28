@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 function ReactGithubList({ username }) {
   const [repositories, setRepositories] = useState([]);
   const [userProfile, setUserProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUserProfile = () => {
@@ -35,6 +36,7 @@ function ReactGithubList({ username }) {
         })
         .then((data) => {
           setRepositories(data);
+          setLoading(false);
         })
         .catch((error) => {
           console.error('Error fetching repositories:', error);
@@ -66,34 +68,44 @@ function ReactGithubList({ username }) {
   return (
     <div className="github-widget">
       <h2>Github repositories</h2>
-      {userProfile && (
-        <div className="userprofile">
-          <img className="profile-picture" src={userProfile.avatar_url} alt="Profile" />
-          <p>{username}</p>
-        </div>
-      )}
-      <div className="repositories-container">
-        {repositories.map((repo) => (
-          <div className="repo" key={repo.id}>
-            <div className="repo-header">
-              <div className="repo-name">
-                <a href={repo.html_url}>{repo.name}</a>
-              </div>
-              {repo.language && (
-                <div className="repo-details">
-                  <div className={`language-dot ${repo.language.toLowerCase()}`}></div>
-                  <span className="repo-language">{repo.language}</span>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <React.Fragment>
+          {userProfile && (
+            <div className="userprofile">
+              <img className="profile-picture" src={userProfile.avatar_url} alt="Profile" />
+              <p>{username}</p>
+            </div>
+          )}
+          <div className="repositories-container">
+            {repositories.length > 0 ? (
+              repositories.map((repo) => (
+                <div className="repo" key={repo.id}>
+                  <div className="repo-header">
+                    <div className="repo-name">
+                      <a href={repo.html_url}>{repo.name}</a>
+                    </div>
+                    {repo.language && (
+                      <div className="repo-details">
+                        <div className={`language-dot ${repo.language.toLowerCase()}`}></div>
+                        <span className="repo-language">{repo.language}</span>
+                      </div>
+                    )}
+                  </div>
+                  {repo.description && <div className="repo-description">{repo.description}</div>}
+                  <div className="repo-details">
+                    <span className="repo-size">{formatSize(repo.size)}</span>
+                    <span className="repo-updated">Last updated on {formatDate(repo.updated_at)}</span>
+                  </div>
                 </div>
-              )}
-            </div>
-            {repo.description && <div className="repo-description">{repo.description}</div>}
-            <div className="repo-details">
-              <span className="repo-size">{formatSize(repo.size)}</span>
-              <span className="repo-updated">Last updated on {formatDate(repo.updated_at)}</span>
-            </div>
+              ))
+            ) : (
+              <p>No repositories found.</p>
+            )}
           </div>
-        ))}
-      </div>
+        </React.Fragment>
+      )}
     </div>
   );
 }
